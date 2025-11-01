@@ -256,8 +256,6 @@
 
 // // export default Dashboard;
 
-
-
 // // // // // // // // // import React, { useEffect, useState, useRef } from "react";
 // // // // // // // // // import "./Dashboard.css";
 
@@ -509,7 +507,6 @@
 
 // // // // // // // // // export default Dashboard
 // // // // // // // // // ;
-
 
 // // // // // // // // // import React, { useEffect, useState, useRef } from "react";
 // // // // // // // // // import "./Dashboard.css"; // We will replace this file's content
@@ -824,8 +821,6 @@
 
 // // // // // // // // // export default Dashboard;
 
-
-
 // // // // // // // // import React, { useEffect, useState, useRef } from "react";
 // // // // // // // // import "./Dashboard.css";
 // // // // // // // // import TextareaAutosize from "react-textarea-autosize";
@@ -1081,7 +1076,6 @@
 // // // // // // // // };
 
 // // // // // // // // export default Dashboard;
-
 
 // // // // // // // import React, { useEffect, useState, useRef } from "react";
 // // // // // // // import "./Dashboard.css";
@@ -1376,7 +1370,6 @@
 
 // // // // // // // export default Dashboard;
 
-
 // // // // // // import React, { useEffect, useState, useRef } from "react";
 // // // // // // import "./Dashboard.css";
 // // // // // // import ExpandingTextArea from "react-expanding-textarea";
@@ -1485,9 +1478,6 @@
 // // // // // // };
 
 // // // // // // export default Dashboard;
-
-
-
 
 // // // // // import React, { useEffect, useState, useRef } from "react";
 // // // // // import "./Dashboard.css";
@@ -1748,7 +1738,6 @@
 
 // // // // // export default Dashboard;
 
-
 // // // // import React, { useState, useEffect, useRef } from "react";
 // // // // import "./Dashboard.css";
 
@@ -1906,8 +1895,6 @@
 // // // // };
 
 // // // // export default Dashboard;
-
-
 
 // // // import React, { useState, useEffect, useRef } from "react";
 // // // import "./Dashboard.css";
@@ -2110,7 +2097,6 @@
 // // // };
 
 // // // export default Dashboard;
-
 
 // // import React, { useState, useEffect, useRef } from "react";
 // // import "./Dashboard.css";
@@ -2397,7 +2383,6 @@
 
 // // export default Dashboard;
 
-
 // import React, { useState, useEffect, useRef } from "react";
 // import { useNavigate } from "react-router-dom";
 // import {
@@ -2636,8 +2621,6 @@
 
 // export default Dashboard;
 
-
-
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -2838,8 +2821,9 @@ const Dashboard = () => {
 
     // Append user message (text or a file as message)
     if (selectedFile) {
-      const fileType =
-        selectedFile.type.startsWith("image/") ? "image" : "document";
+      const fileType = selectedFile.type.startsWith("image/")
+        ? "image"
+        : "document";
       const fileUrl = previewUrl || URL.createObjectURL(selectedFile);
       setMessages((p) => [
         ...p,
@@ -2947,8 +2931,7 @@ const Dashboard = () => {
         {
           role: "assistant",
           type: "text",
-          content:
-            "⚠️ Webhook error. Make sure your endpoint is reachable and returns a supported content-type.",
+          content: "⚠️ Resource not found.",
         },
       ]);
     } finally {
@@ -3017,24 +3000,36 @@ const Dashboard = () => {
           {messages.map((m, idx) => (
             <div
               key={idx}
-              className={`message-row ${m.role === "user" ? "user" : "assistant"}`}
+              className={`message-row ${
+                m.role === "user" ? "user" : "assistant"
+              }`}
             >
               {/* avatar */}
               <div className="msg-avatar">
-                {m.role === "user" ? <div className="avatar-user">U</div> : <div className="avatar-bot">A</div>}
+                {m.role === "user" ? (
+                  <div className="avatar-user">U</div>
+                ) : (
+                  <div className="avatar-bot">A</div>
+                )}
               </div>
 
               <div className="msg-bubble-wrapper">
                 <div
-                  className={`msg-bubble ${m.role === "user" ? "bubble-user" : "bubble-assistant"}`}
+                  className={`msg-bubble ${
+                    m.role === "user" ? "bubble-user" : "bubble-assistant"
+                  }`}
                 >
                   {/* message content types */}
-                  {m.type === "text" && <div className="msg-text">{m.content}</div>}
+                  {m.type === "text" && (
+                    <div className="msg-text">{m.content}</div>
+                  )}
 
                   {m.type === "typing" && (
                     <div className="typing-block">
                       <div className="typing-dots">
-                        <span></span><span></span><span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                       </div>
                       <div className="typing-text">
                         <strong>Agent OG is thinking</strong>
@@ -3044,19 +3039,35 @@ const Dashboard = () => {
                   )}
 
                   {m.type === "image" && (
-                    <img className="response-image" src={m.fileUrl} alt={m.name || "image"} />
+                    <img
+                      className="response-image"
+                      src={m.fileUrl}
+                      alt={m.name || "image"}
+                    />
                   )}
 
                   {m.type === "document" && (
                     <div className="attached-file">
                       <div className="file-icon">📄</div>
                       <div className="file-meta">
-                        <a href={m.fileUrl} target="_blank" rel="noreferrer" className="file-name">
+                        <a
+                          href={m.fileUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="file-name"
+                        >
                           {m.name || m.content}
                         </a>
-                        {m.size && <div className="file-size">{formatBytes(m.size)}</div>}
+                        {m.size && (
+                          <div className="file-size">{formatBytes(m.size)}</div>
+                        )}
                       </div>
-                      <a className="file-download" href={m.fileUrl} target="_blank" rel="noreferrer">
+                      <a
+                        className="file-download"
+                        href={m.fileUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         Download
                       </a>
                     </div>
@@ -3067,12 +3078,18 @@ const Dashboard = () => {
                 <div className="msg-actions">
                   {m.type === "text" && (
                     <>
-                      <button className="action-btn" onClick={() => handleCopy(m.content)}>
+                      <button
+                        className="action-btn"
+                        onClick={() => handleCopy(m.content)}
+                      >
                         <FaCopy />
                         <span>Copy</span>
                       </button>
                       {m.role === "user" && (
-                        <button className="action-btn" onClick={() => handleEdit(idx)}>
+                        <button
+                          className="action-btn"
+                          onClick={() => handleEdit(idx)}
+                        >
                           <FaEdit />
                           <span>Edit</span>
                         </button>
@@ -3087,9 +3104,13 @@ const Dashboard = () => {
           {loading && (
             <div className="thinking-footer">
               <div className="small-dots">
-                <span></span><span></span><span></span>
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
-              <div className="thinking-text">Agent OG is thinking... {tips[tipIndex]}</div>
+              <div className="thinking-text">
+                Agent OG is thinking... {tips[tipIndex]}
+              </div>
             </div>
           )}
 
@@ -3100,22 +3121,35 @@ const Dashboard = () => {
         {selectedFile && (
           <div className="file-preview">
             <div className="fp-left">
-              <div className="fp-icon">{selectedFile.type.startsWith("image/") ? "🖼️" : "📎"}</div>
+              <div className="fp-icon">
+                {selectedFile.type.startsWith("image/") ? "🖼️" : "📎"}
+              </div>
               <div className="fp-meta">
                 <div className="fp-name">{selectedFile.name}</div>
                 <div className="fp-size">{formatBytes(selectedFile.size)}</div>
               </div>
             </div>
-            <button className="fp-remove" onClick={removeFile}><FaTimes /></button>
+            <button className="fp-remove" onClick={removeFile}>
+              <FaTimes />
+            </button>
           </div>
         )}
 
         {/* Input area */}
         <footer className="chat-input">
-          <label htmlFor="file-input" className="input-icon attach-icon" title="Attach file">
+          <label
+            htmlFor="file-input"
+            className="input-icon attach-icon"
+            title="Attach file"
+          >
             <FaPaperclip />
           </label>
-          <input id="file-input" type="file" hidden onChange={handleFileSelect} />
+          <input
+            id="file-input"
+            type="file"
+            hidden
+            onChange={handleFileSelect}
+          />
 
           <button
             className={`input-icon mic-icon ${isRecording ? "recording" : ""}`}
