@@ -1,0 +1,189 @@
+/* .wrapper {
+  padding: 70px 10%;
+  background: #0b0e19;
+  text-align: center;
+}
+
+.heading {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  background: linear-gradient(90deg, #4f46e5, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 28px;
+  border-radius: 18px;
+  transition: 0.35s ease;
+  position: relative;
+  color: #eaeaea;
+  text-align: left;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.card:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(79, 70, 229, 0.3);
+}
+
+.step-number {
+  font-size: 1.3rem;
+  background: #4f46e5;
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.step-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #10b981;
+}
+
+.card:hover .step-icon {
+  color: #4f46e5;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.card-link {
+  color: #4f46e5;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.code-block {
+  display: block;
+  background: #111827;
+  color: #10b981;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-family: monospace;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.card:hover .code-block {
+  background: #222;
+  color: #16a34a;
+} */
+
+
+.wrapper {
+  padding: 80px 10%;
+  background: #0e111f;
+  text-align: center;
+  margin-top: -100px;
+}
+
+.heading {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  background: linear-gradient(90deg, #4f46e5, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  border-radius: 18px;
+  transition: 0.35s ease;
+  text-align: left;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.card:hover {
+  background: #141414;
+  color: #ffffff;
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(79, 70, 229, 0.35);
+
+
+}
+
+.icon-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.step-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #6b46f0;
+}
+/* .step-number:hover
+{
+  color: #ffffff;
+}  */
+  .card:hover .step-number {
+  color: #ffffff;
+}
+.step-icon {
+  font-size: 2.2rem;
+  color: #10b981;
+}
+
+/* .card:hover .step-icon {
+  color: #4f46e5;
+} */
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.card-link {
+  color: #4f46e5;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.code-block {
+  display: block;
+  background: #111827;
+  color: #10b981;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-family: monospace;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  border: 1px solid #0f172a;
+}
+
+.card:hover .code-block {
+  background: #222;
+  color: #15803d;
+}

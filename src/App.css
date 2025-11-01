@@ -1,0 +1,506 @@
+/* --- Global & Font Styles --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root {
+  --bg-dark-primary: #343541;
+  --bg-dark-secondary: #202123;
+  --bg-message-bot: #444654;
+  --bg-input: #40414f;
+  --bubble-bot: #2f3136;
+  --bubble-user: #005c4b;
+  --text-light: #ececf1;
+  --text-gray: #c5c5d2;
+  --border-color: #565869;
+  --accent-cyan: #29b6f6;
+  --accent-cyan-hover: #03a9f4;
+  --error-red: #ef5350;
+  --error-red-bg: rgba(239, 83, 80, 0.1);
+
+  /* New Variables for Contact Us and Dashboard Header */
+  --background-grey: #f0f2f5; /* Light grey background for contact page */
+  --background-light: #ffffff; /* White card background for contact page/dropdown */
+  --primary-blue: #007bff; /* Primary blue for focus/hover states */
+  --secondary-blue: #0069d9; /* Darker blue for submit buttons */
+  --text-dark: #343a40; /* Dark text for contact page */
+  --text-medium: #6c757d; /* Medium grey text */
+  --border-color-light: #ced4da; /* Light border for inputs */
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  --font-family: 'Inter', sans-serif; /* Consistent font */
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Keep background-color for dashboard/chat pages, or set dynamically in JS/themes */
+  background-color: var(--bg-dark-primary);
+  color: var(--text-light);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* --- Auth Page --- */
+.auth-page { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1rem; }
+.auth-card { width: 100%; max-width: 440px; background-color: var(--bg-dark-secondary); border-radius: 1rem; padding: 2rem; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.auth-title { font-size: 1.875rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem; }
+.auth-subtitle { text-align: center; color: var(--text-gray); margin-bottom: 2rem; }
+.error-message { background-color: var(--error-red-bg); border: 1px solid var(--error-red); color: var(--error-red); padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 1.5rem; text-align: center; font-size: 0.875rem; }
+.auth-form .form-group { margin-bottom: 1rem; }
+.auth-form .form-label { display: block; color: var(--text-gray); font-size: 0.875rem; font-weight: 700; margin-bottom: 0.5rem; }
+.auth-form .form-input { width: 100%; padding: 0.85rem 1rem; border-radius: 0.5rem; background-color: #3c3d4b; border: 1px solid var(--border-color); color: var(--text-light); transition: all 0.2s ease-in-out; }
+.auth-form .form-input:focus { outline: none; box-shadow: 0 0 0 2px var(--accent-cyan); border-color: var(--accent-cyan); }
+.submit-button { width: 100%; background-color: var(--accent-cyan); color: white; font-weight: 700; padding: 0.85rem 1rem; border-radius: 0.5rem; border: none; cursor: pointer; transition: background-color 0.2s; margin-top: 0.5rem; }
+.submit-button:hover { background-color: var(--accent-cyan-hover); }
+.submit-button:disabled { background-color: #555; cursor: not-allowed; }
+.toggle-text { text-align: center; color: var(--text-gray); margin-top: 2rem; font-size: 0.875rem; }
+.toggle-button { font-weight: 700; color: var(--accent-cyan); background: none; border: none; cursor: pointer; margin-left: 0.25rem; }
+.toggle-button:hover { text-decoration: underline; }
+
+/* --- Dashboard --- */
+.dashboard { display: flex; height: 100vh; overflow: hidden; }
+
+/* --- Sidebar --- */
+.sidebar { display: flex; flex-direction: column; height: 100vh; width: 260px; background-color: var(--bg-dark-secondary); color: var(--text-light); padding: 0.5rem; transition: transform 0.3s ease-in-out; }
+.sidebar .new-chat-button { display: flex; align-items: center; gap: 0.75rem; width: 100%; text-align: left; padding: 0.75rem; margin-bottom: 0.5rem; border-radius: 0.5rem; background: none; border: none; color: var(--text-light); cursor: pointer; font-size: 0.875rem; font-weight: 500; transition: background-color 0.2s; }
+.sidebar .new-chat-button:hover { background-color: rgba(255, 255, 255, 0.05); }
+.sidebar .chat-history { flex-grow: 1; overflow-y: auto; padding-right: 0.5rem; }
+.sidebar .chat-history-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; color: var(--text-light); font-size: 0.875rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: background-color 0.2s; }
+.sidebar .chat-history-item:hover { background-color: rgba(255, 255, 255, 0.05); }
+.sidebar .sidebar-footer { margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 0.5rem; }
+.sidebar .user-profile { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem; border-radius: 0.5rem; position: relative; }
+.sidebar .user-profile:hover { background-color: rgba(255, 255, 255, 0.05); }
+.sidebar .user-avatar { height: 2rem; width: 2rem; background-color: var(--accent-cyan); border-radius: 9999px; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 700; }
+.sidebar .user-email { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.875rem; font-weight: 500; }
+.sidebar .logout-button { background: none; border: none; color: var(--text-gray); cursor: pointer; opacity: 0; transition: opacity 0.2s; padding: 0.25rem; }
+.sidebar .user-profile:hover .logout-button { opacity: 1; }
+.sidebar .logout-button:hover { color: var(--text-light); }
+
+/* --- Main Content --- */
+.main-content { flex: 1; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.chat-window { flex: 1; overflow-y: auto; padding: 1rem 0; }
+
+/* --- Messages --- */
+.message-container {
+  padding: 0.5rem 1rem;
+  display: flex;
+}
+.message-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  max-width: 75%;
+}
+.message-wrapper--bot {
+  justify-content: flex-start;
+}
+.message-wrapper--user {
+  margin-left: auto;
+  justify-content: flex-end;
+}
+.message-avatar {
+  flex-shrink: 0;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-cyan);
+}
+.message-bubble {
+  padding: 0.6rem 1rem;
+  border-radius: 1.25rem;
+  color: var(--text-light);
+}
+.message-bubble--bot {
+  background-color: var(--bg-message-bot);
+  border-bottom-left-radius: 0.25rem;
+}
+.message-bubble--user {
+  background-color: var(--bubble-user);
+  border-bottom-right-radius: 0.25rem;
+}
+.message-text {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* --- Typing Indicator --- */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0;
+}
+.typing-indicator span {
+  height: 8px;
+  width: 8px;
+  background-color: #949aab;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 2px;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+.typing-indicator span:nth-of-type(1) { animation-delay: -0.32s; }
+.typing-indicator span:nth-of-type(2) { animation-delay: -0.16s; }
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1.0); }
+}
+
+/* --- Empty State --- */
+.empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 1rem; }
+.empty-state-icon-wrapper { width: 4rem; height: 4rem; background-color: var(--bg-dark-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--border-color); margin-bottom: 1.5rem; }
+.empty-state-icon-wrapper svg { width: 2rem; height: 2rem; color: var(--text-gray); }
+.empty-state-title { font-size: 2rem; font-weight: 700; color: var(--text-gray); }
+.prompt-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; max-width: 800px; width: 100%; margin-top: 3rem; }
+.prompt-button { width: 100%; text-align: left; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 0.75rem; background: none; cursor: pointer; color: var(--text-light); transition: background-color 0.2s; }
+.prompt-button:hover { background-color: rgba(255, 255, 255, 0.05); }
+.prompt-button h3 { margin: 0; font-weight: 600; font-size: 0.875rem; }
+
+/* --- Input Area --- */
+.input-wrapper { position: relative; width: 100%; }
+.input-area-gradient { position: absolute; bottom: 0; left: 0; right: 0; height: 10rem; background: linear-gradient(to top, var(--bg-dark-primary) 20%, transparent); pointer-events: none; z-index: 0; }
+.input-area { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 0 1rem 2rem 1rem; }
+.input-form { position: relative; display: flex; align-items: flex-end; background-color: var(--bg-input); border: 1px solid var(--border-color); border-radius: 1rem; box-shadow: 0 5px 20px rgba(0,0,0,0.3); padding: 0.5rem; }
+.input-actions { display: flex; align-items: center; }
+.action-button { padding: 0.5rem; color: var(--text-gray); background: none; border: none; cursor: pointer; transition: color 0.2s; }
+.action-button:hover { color: var(--text-light); }
+.message-input { flex: 1; background: transparent; resize: none; border: none; outline: none; padding: 0.5rem 0.75rem; color: var(--text-light); font-size: 1rem; font-family: inherit; max-height: 200px; }
+.send-button { background-color: #555; padding: 0.625rem; border-radius: 0.5rem; color: white; border: none; cursor: pointer; transition: background-color 0.2s; }
+.send-button:hover { background-color: #666; }
+.send-button:disabled { background: transparent; color: #666; cursor: not-allowed; }
+.disclaimer { text-align: center; font-size: 0.75rem; color: var(--text-gray); margin-top: 0.75rem; }
+
+/* --- Dashboard Header & Settings Dropdown Styles --- */
+/* Replacing .mobile-header for consistent naming and functionality */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--bg-dark-primary); /* Use dark primary for dashboard header */
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; /* Keep header at top */
+    top: 0;
+    width: 100%;
+    z-index: 10; /* Ensure header is above chat content */
+}
+
+.dashboard-header h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin: 0; /* Remove default margin */
+}
+
+.settings-container {
+    position: relative; /* Parent for dropdown positioning */
+    z-index: 20; /* Ensure settings dropdown is above other header elements */
+}
+
+.settings-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-gray);
+    padding: 0.5rem;
+    border-radius: var(--border-radius-md);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex; /* To center icon if it were larger */
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-button:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* Lighter hover for dark theme */
+    color: var(--accent-cyan);
+}
+
+.settings-dropdown {
+    position: absolute;
+    top: 100%; /* Position below the settings button */
+    right: 0;
+    background-color: var(--bg-dark-secondary); /* Dark background for dropdown */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    z-index: 100; /* Ensure it's above other elements */
+}
+
+.dropdown-item {
+    background: none;
+    border: none;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    width: 100%;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* Lighter hover for dark theme */
+    color: var(--accent-cyan);
+}
+
+/* --- Contact Us Page Styles --- */
+/* For the contact us page, we'll override the global dark background */
+.contact-us-page {
+  background-color: var(--background-grey); /* Light grey background for contact page */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-dark); /* Default text color for this page */
+}
+
+.contact-us-page .navbar { /* Assuming your Navbar component has a .navbar class */
+    background-color: var(--background-light); /* Light navbar for contact page */
+    border-bottom: 1px solid var(--border-color-light);
+    color: var(--text-dark);
+}
+
+.contact-us-container {
+  flex-grow: 1; /* Allows container to take available space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+}
+
+.contact-us-card {
+  background: var(--background-light); /* White card background */
+  padding: 2.5rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--card-shadow);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.contact-us-card h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.contact-description {
+  font-size: 1rem;
+  color: var(--text-medium);
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.contact-form .input-group {
+  text-align: left;
+  margin-bottom: 1.2rem;
+}
+
+.contact-form .input-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-medium);
+}
+
+.contact-form .input-group input,
+.contact-form .input-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-color-light); /* Use light border */
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  font-family: var(--font-family); /* Ensure consistent font */
+  color: var(--text-dark); /* Dark text for inputs */
+  background-color: #f8f9fa; /* Light background for inputs */
+}
+
+.contact-form .input-group input:focus,
+.contact-form .input-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.contact-form textarea {
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 100px; /* Minimum height for textarea */
+}
+
+.submit-btn, .back-to-form-btn {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: var(--primary-blue); /* Use primary blue for buttons */
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover, .back-to-form-btn:hover {
+  background-color: var(--secondary-blue); /* Darker blue on hover */
+}
+
+.submission-success {
+    padding: 2rem;
+    background-color: #e6ffed; /* Light green background */
+    border: 1px solid #38a169; /* Green border */
+    border-radius: var(--border-radius-md);
+    color: #2f855a; /* Darker green text */
+    margin-top: 1rem;
+}
+
+.submission-success p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+/* --- Responsive --- */
+@media (min-width: 768px) {
+  .prompt-grid { grid-template-columns: 1fr 1fr; }
+  /* Hide the menu button on larger screens for dashboard header */
+  .dashboard-header .menu-button {
+    display: none;
+  }
+}
+
+/* Original mobile-header is replaced by dashboard-header. */
+/* The styles for the sidebar and chat window on small screens are maintained,
+   but applied to .dashboard-header instead of .mobile-header */
+@media (max-width: 767px) {
+  .sidebar { position: fixed; left: 0; top: 0; z-index: 40; transform: translateX(-100%); width: 70%; /* Adjust sidebar width for mobile */ }
+  .sidebar--open { transform: translateX(0); box-shadow: 2px 0 10px rgba(0,0,0,0.2); /* Add shadow when open */ }
+  .main-content { width: 100%; }
+  /* Dashboard Header for mobile */
+  .dashboard-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: sticky; /* Sticky, not absolute, for consistency */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 1rem; /* Adjust padding */
+    z-index: 30;
+    background: var(--bg-dark-primary); /* Consistent dark background */
+    /* backdrop-filter: blur(5px); Removed, often problematic for performance/support */
+    border-bottom: 1px solid var(--border-color);
+  }
+  .menu-button { color: var(--text-light); background: none; border: none; cursor: pointer; padding: 0.5rem; display: block; /* Ensure it's visible */ }
+  .chat-window { padding-top: 4rem; /* Account for sticky header height */ }
+
+  /* Responsive adjustments for Contact Us Page */
+  .contact-us-container {
+      padding: 2rem 0.8rem;
+  }
+  .contact-us-card {
+      padding: 1.8rem;
+  }
+  .contact-us-card h2 {
+      font-size: 1.6rem;
+  }
+  .contact-description {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+  }
+  .contact-form .input-group label {
+      font-size: 0.85rem;
+  }
+  .contact-form .input-group input,
+  .contact-form .input-group textarea,
+  .submit-btn, .back-to-form-btn {
+      font-size: 0.9rem;
+      padding: 0.7rem 0.9rem;
+  }
+
+  /* Responsive adjustments for Settings Dropdown */
+  .settings-dropdown {
+      min-width: unset; /* Let content determine width */
+      width: 150px; /* Or a fixed width */
+      right: 0.5rem; /* Adjust position for very small screens */
+  }
+}
+
+@media (max-width: 480px) {
+    /* More specific contact page adjustments for smaller screens */
+    .contact-us-card {
+        padding: 1.2rem;
+    }
+    .contact-us-card h2 {
+        font-size: 1.4rem;
+    }
+    .contact-description {
+        font-size: 0.85rem;
+    }
+}
+
+.menu-container {
+  position: relative;
+}
+
+.menu-dots-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 35px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  min-width: 120px;
+}
+
+.dropdown-item {
+  width: 100%;
+  padding: 10px 14px;
+  text-align: left;
+  background: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropdown-item:hover {
+  background: #f5f5f5;
+}

@@ -1,0 +1,71 @@
+.workflow-wrapper {
+  padding: 60px 10%;
+  min-height: 100vh;
+  background: #0a0d18;
+  color: #fff;
+}
+
+.workflow-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, #4f46e5, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.workflow-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.workflow-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.07);
+  padding: 22px 25px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(6px);
+  transition: 0.3s;
+}
+
+.workflow-card:hover {
+  background: rgba(255, 255, 255, 0.13);
+  transform: translateY(-3px);
+}
+
+.workflow-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.workflow-card p {
+  color: #b6b6b6;
+  margin-top: 5px;
+  font-size: 0.95rem;
+  max-width: 500px;
+}
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(45deg, #4f46e5, #10b981);
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  transform: scale(1.05);
+}
+
+.download-icon {
+  font-size: 1rem;
+}
