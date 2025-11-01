@@ -7,6 +7,7 @@ import LoginSignup from "./Components/LoginSignup";
 import IntegrationsPage from "./Components/IntegrationsPage";
 import WorkFlows from "./Components/WorkFlows";
 import ProcessSteps from "./Components/ProcessSteps";
+import ContactUsPage from "./Components/ContactUsPage";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/auth" element={<LoginSignup />} />
         <Route path="/workflows" element={<WorkFlows />} />
          <Route path="/setup-process" element={<ProcessSteps />} />
+         <Route path="/contact" element={<ContactUsPage />} />
       
       </Routes>
     </Router>
