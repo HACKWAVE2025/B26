@@ -121,10 +121,10 @@ This unified system eliminates the need for multiple disconnected apps, enabling
 
 ## 🧩 Contributors
 **Project Team:**  
-- Nadeem  
+- Anil  
 - Sravan  
 - Saikiran  
-- Anil
+- Nadeem
 
 ---
 
