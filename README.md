@@ -112,11 +112,8 @@ This unified system eliminates the need for multiple disconnected apps, enabling
 ---
 
 ## 📈 Future Enhancements
-- Voice-based workflow creation and management.  
-- Integration with Slack, Notion, and Trello.  
-- Advanced analytics dashboard for productivity insights.  
-- Team collaboration and shared workspace support.  
-
+- Voice-based workflow creation and management.
+- Automation for copying workflows and oadtingin n8n  
 ---
 
 ## 🧩 Contributors
