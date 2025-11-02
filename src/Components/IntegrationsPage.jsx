@@ -1,36 +1,3 @@
-// import React from "react";
-// import { FaServer, FaRobot, FaCloud, FaKey, FaPlug, FaDatabase } from "react-icons/fa";
-// import "./IntegrationsPage.css";
-
-// const integrations = [
-//   { icon: <FaServer />, title: "Webhooks", desc: "Trigger automations using incoming/outgoing webhooks." },
-//   { icon: <FaRobot />, title: "OpenAI / AI Agents", desc: "Integrate AI Agents and LLM-based workflows." },
-//   { icon: <FaCloud />, title: "Google APIs", desc: "Google Sheets, Gmail, Drive automations." },
-//   { icon: <FaKey />, title: "API Keys", desc: "Store and manage secure API credentials." },
-//   { icon: <FaPlug />, title: "Third-Party APIs", desc: "Connect to 200+ external tools." },
-//   { icon: <FaDatabase />, title: "Databases", desc: "MySQL, PostgreSQL, MongoDB connections." },
-// ];
-
-// function IntegrationsPage() {
-//   return (
-//     <div className="integration-wrapper">
-//       <h2 className="heading">Available Integrations</h2>
-
-//       <div className="integration-card-container">
-//         {integrations.map((item, index) => (
-//           <div className="integration-card" key={index}>
-//             <div className="integration-icon">{item.icon}</div>
-//             <h3>{item.title}</h3>
-//             <p>{item.desc}</p>
-//             <button className="integration-btn">Connect</button>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default IntegrationsPage;
 
 import React from "react";
 import {
